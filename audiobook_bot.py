@@ -2,7 +2,11 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, MessageHandler, filters
 from voice import save_file
 
-TOKEN = "5769881258:AAGEeU4o5fYVbQEqDu2oP5yByme14jQSfHA"
+def toki():
+    a = open('./token.txt')
+    return a.read()
+
+TOKEN = toki()
 
 
 async def hello(update, context):
