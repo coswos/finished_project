@@ -19,7 +19,7 @@ async def help_handler(update, context):
 
 async def reply(update, context):
     file_name = save_file(update.message.text)
-    await update.message.reply_text('Your entered text: ' + file_name)
+    await update.message.reply_text('Cоздается файл с именем ' + file_name)
     await update.message.reply_voice(voice=open(file_name, "rb"))
 
 
