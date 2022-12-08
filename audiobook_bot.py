@@ -2,12 +2,11 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, MessageHandler, filters
 from voice import save_file
 
-def toki():
-    a = open('./token.txt')
-    return a.read()
+def read_token():
+   with open('token.txt') as f:
+    return f.read()
 
-TOKEN = toki()
-
+TOKEN = read_token()
 
 async def hello(update, context):
     await update.message.reply_text(f'Hello {update.effective_user.first_name}')
@@ -20,7 +19,7 @@ async def help_handler(update, context):
 
 async def reply(update, context):
     file_name = save_file(update.message.text)
-    await update.message.reply_text('Your entering text is: ' + file_name)
+    await update.message.reply_text('Your entered text: ' + file_name)
     await update.message.reply_voice(voice=open(file_name, "rb"))
 
 
